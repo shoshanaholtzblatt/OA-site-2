@@ -1,0 +1,58 @@
+[
+  {
+    "id": "sun-1800-stmargarets",
+    "day": "Sunday",
+    "day_order": 0,
+    "time": "6:00 PM",
+    "duration_min": 60,
+    "format": "in-person",
+    "focus": "Open",
+    "location_name": "St. Margaret's Episcopal Church",
+    "address": "1830 Connecticut Ave NW, Washington, DC",
+    "join_link": null,
+    "phone": null,
+    "notes": ""
+  },
+  {
+    "id": "mon-1200-bethesda",
+    "day": "Monday",
+    "day_order": 1,
+    "time": "12:00 PM",
+    "duration_min": 60,
+    "format": "in-person",
+    "focus": "Open",
+    "location_name": "United Church of Christ",
+    "address": "Bethesda, MD",
+    "join_link": null,
+    "phone": null,
+    "notes": ""
+  },
+  {
+    "id": "tue-1100-gaithersburg",
+    "day": "Tuesday",
+    "day_order": 2,
+    "time": "11:00 AM",
+    "duration_min": 60,
+    "format": "hybrid",
+    "focus": "Open",
+    "location_name": "Grace United Methodist Church",
+    "address": "Gaithersburg, MD",
+    "join_link": null,
+    "phone": "425-436-6374 (PIN 125516)",
+    "notes": "Phone access available."
+  },
+  {
+    "id": "tue-1100-newcomer-gaithersburg",
+    "day": "Tuesday",
+    "day_order": 2,
+    "time": "11:00 AM",
+    "duration_min": 60,
+    "format": "in-person",
+    "focus": "Newcomer",
+    "location_name": "Grace United Methodist Church (Library Parlor)",
+    "address": "Gaithersburg, MD",
+    "join_link": null,
+    "phone": "301-655-5728",
+    "notes": "Special introduction for newcomers; questions welcome."
+  }
+]
