@@ -33,29 +33,41 @@ be served over HTTP for the meetings page to populate (file:// won't work).
 
 ## Editing meetings
 
-`data/meetings.json` is the single source of truth. Each entry:
+`data/meetings.json` is the single source of truth. The page renders one
+section per unique `region`, with sub-headings by day (Sun → Sat) and
+meetings sorted by time within each day. Format chips and search filter
+across everything. No rebuild needed.
+
+Each entry uses this shape (most fields optional except the first four):
 
 ```json
 {
-  "id": "mon-1200-bethesda",
-  "day": "Monday",
-  "day_order": 1,
-  "time": "12:00 PM",
-  "duration_min": 60,
-  "format": "in-person",      // "in-person" | "virtual" | "phone" | "hybrid"
-  "region": "metro",           // "dc" | "metro" | "specialty"
-  "focus": "Open",             // or "Newcomer", "Step Study", "BBSS", etc.
-  "location_name": "United Church of Christ",
-  "address": "Bethesda, MD",
-  "join_link": null,
-  "phone": null,
-  "size": null,
-  "notes": ""
+  "region": "District of Columbia",
+  "day": "Tuesday",
+  "time": "1:00 PM",
+  "name": "St Stephen's Church",
+  "meeting_id": "50105",
+  "status": "Currently Virtual Only",
+  "frequency": "In Person Weekly",
+  "contacts": [
+    { "name": "Mark A.", "phone": "202-277-2715" }
+  ],
+  "zoom_url": "https://zoom.us/j/...",
+  "phone_access": "301-715-8592",
+  "pin": "791 814 193",
+  "password": "868633",
+  "address": "1623 Connecticut Avenue, NW",
+  "room": "EDU 2-3",
+  "notes": "Across from Metro in Takoma Park"
 }
 ```
 
-Add an object per meeting; the page filters and groups client-side. No
-rebuild needed.
+`status` is the human-readable state shown as a tag. The renderer derives a
+filterable format from it ("Hybrid" → hybrid; "Virtual" → virtual; "Phone
+Only" → phone; everything else → in-person). The IA-required top-level
+sections (DC / Metro / Specialty) emerge automatically — `region` values
+starting with "District of Columbia" sort first, then "Maryland - …",
+then "Virginia - …", then anything tagged specialty.
 
 ## Editing events
 

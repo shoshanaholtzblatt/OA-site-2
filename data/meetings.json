@@ -1,66 +1,69 @@
 [
   {
-    "id": "sun-1800-stmargarets",
+    "region": "District of Columbia",
+    "day": "Tuesday",
+    "time": "1:00 PM",
+    "name": "St Stephen’s Church",
+    "meeting_id": "50105",
+    "status": "Currently Virtual Only",
+    "contacts": [
+      { "name": "Mark A.", "phone": "202-277-2715" }
+    ],
+    "zoom_url": "https://zoom.us/j/791814193?pwd=U0psVDJtR3NkeVlSYXdZcnR0dGdSdz09",
+    "phone_access": "301-715-8592",
+    "pin": "791 814 193",
+    "password": "868633"
+  },
+  {
+    "region": "District of Columbia",
+    "day": "Tuesday",
+    "time": "6:30 PM",
+    "name": "Dupont Circle Club",
+    "meeting_id": "31853",
+    "status": "Currently In Person Only",
+    "frequency": "In Person Weekly",
+    "contacts": [
+      { "name": "Johnny G.", "phone": "202-770-7391" }
+    ],
+    "address": "1623 Connecticut Avenue, NW"
+  },
+  {
+    "region": "District of Columbia",
+    "day": "Wednesday",
+    "time": "6:30 PM",
+    "name": "Seekers Church Takoma Park",
+    "status": "In Person Weekly",
+    "contacts": [
+      { "name": "Amy T.", "phone": "202-446-8169" },
+      { "name": "Debbie D.", "phone": "202-271-9301" }
+    ],
+    "address": "276 Carroll Street NW",
+    "notes": "Across from Metro in Takoma Park"
+  },
+  {
+    "region": "Maryland - Montgomery County",
     "day": "Sunday",
-    "day_order": 0,
-    "time": "6:00 PM",
-    "duration_min": 60,
-    "format": "in-person",
-    "region": "dc",
-    "focus": "Open",
-    "location_name": "St. Margaret's Episcopal Church",
-    "address": "1830 Connecticut Ave NW, Washington, DC",
-    "join_link": null,
-    "phone": null,
-    "size": null,
-    "notes": ""
+    "time": "9:30 AM",
+    "name": "Holy Cross Hospital Silver Spring",
+    "meeting_id": "30114",
+    "status": "Hybrid",
+    "contacts": [
+      { "name": "Dale B.", "phone": "301-793-8988" }
+    ],
+    "address": "1500 Forest Glen Rd, Silver Spring, MD 20910",
+    "room": "EDU 2-3"
   },
   {
-    "id": "mon-1200-bethesda",
-    "day": "Monday",
-    "day_order": 1,
-    "time": "12:00 PM",
-    "duration_min": 60,
-    "format": "in-person",
-    "region": "metro",
-    "focus": "Open",
-    "location_name": "United Church of Christ",
-    "address": "Bethesda, MD",
-    "join_link": null,
-    "phone": null,
-    "size": null,
-    "notes": ""
-  },
-  {
-    "id": "tue-1100-gaithersburg",
-    "day": "Tuesday",
-    "day_order": 2,
-    "time": "11:00 AM",
-    "duration_min": 60,
-    "format": "hybrid",
-    "region": "metro",
-    "focus": "Open",
-    "location_name": "Grace United Methodist Church",
-    "address": "Gaithersburg, MD",
-    "join_link": null,
-    "phone": "425-436-6374 (PIN 125516)",
-    "size": null,
-    "notes": "Phone access available."
-  },
-  {
-    "id": "tue-1100-newcomer-gaithersburg",
-    "day": "Tuesday",
-    "day_order": 2,
-    "time": "11:00 AM",
-    "duration_min": 60,
-    "format": "in-person",
-    "region": "metro",
-    "focus": "Newcomer",
-    "location_name": "Grace United Methodist Church (Library Parlor)",
-    "address": "Gaithersburg, MD",
-    "join_link": null,
-    "phone": "301-655-5728",
-    "size": null,
-    "notes": "Special introduction for newcomers; questions welcome."
+    "region": "Maryland - Prince George’s, Anne Arundel, and Howard Counties",
+    "day": "Saturday",
+    "time": "9:30 AM",
+    "name": "Serenity Center, Columbia",
+    "meeting_id": "46205",
+    "status": "Hybrid",
+    "contacts": [
+      { "name": "Nancy K", "phone": "(410) 660-7264" }
+    ],
+    "address": "9650 Basket Ring Road, Columbia, Maryland",
+    "zoom_url": "https://us02web.zoom.us/j/7310889762?pwd=QklrWFFPZmhCdUM1bTB4SjZ5bnk5dz09"
   }
 ]
