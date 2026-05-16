@@ -4,7 +4,6 @@ on:
   push:
     branches:
       - claude/plan-website-redesign-DofAm
-      - claude/review-phase-0-p7eog
       - main
   workflow_dispatch:
 
