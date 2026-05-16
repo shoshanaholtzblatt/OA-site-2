@@ -4,10 +4,10 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Newcomers — DC Metro OA</title>
-<meta name="description" content="New to Overeaters Anonymous? Start here. What to expect at your first meeting, the free newcomer pamphlet, and how to reach us.">
+<meta name="description" content="New to OA? Start here. What OA is, whether it's right for you, how to start, what to expect at a meeting, and how to get a sponsor.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Lora:wght@500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/css/styles.css">
 </head>
 <body>
@@ -22,13 +22,11 @@
     </a>
     <button class="nav-toggle" aria-expanded="false" aria-controls="primary-nav">Menu</button>
     <ul class="nav-links" id="primary-nav">
-      <li><a href="index.html">Home</a></li>
-      <li><a href="meetings.html">Meetings</a></li>
       <li><a href="newcomers.html">Newcomers</a></li>
+      <li><a href="meetings.html">Meetings</a></li>
       <li><a href="events.html">Events</a></li>
-      <li><a href="about.html">About OA</a></li>
       <li><a href="intergroup.html">Intergroup</a></li>
-      <li><a href="contribute.html" class="nav-cta">Contribute</a></li>
+      <li><a href="donate.html" class="nav-cta" data-donate-trigger>Donate</a></li>
     </ul>
   </div>
 </header>
@@ -38,55 +36,106 @@
 <section class="page-header">
   <div class="container">
     <h1>Welcome — we're glad you're here</h1>
-    <p class="lede">If your eating is out of control, you're not alone. Many of us came to our first meeting feeling exactly the way you might feel now. There is a way out, and it doesn't cost anything to start.</p>
+    <p class="lede">If your relationship with food feels out of your control, you're not alone. Many of us came to our first meeting feeling exactly how you might feel now. Here are answers to the questions newcomers ask most.</p>
   </div>
 </section>
 
 <section class="section">
-  <div class="container split">
-    <div class="prose">
+  <div class="container" style="max-width: 820px;">
 
-      <h2>What to expect at your first meeting</h2>
-      <p>OA meetings are gatherings of two or more compulsive eaters who come together to share their experience, strength, and hope. Most meetings last 60 to 90 minutes and follow a simple format: readings from OA literature, members sharing what's working for them, and time at the end for questions.</p>
-      <p><strong>You don't need to share, identify yourself, or commit to anything.</strong> You can just listen. There is no weigh-in, no diet plan, and no fee.</p>
+    <ol class="qa-list">
 
-      <h2>Special newcomer meetings</h2>
-      <p>Every OA meeting welcomes newcomers, but our designated <strong>newcomer meetings</strong> offer a special introduction to the program with time set aside for your questions.</p>
-      <div class="callout">
-        <h3>Tuesdays · 11:00 AM</h3>
-        <p class="mb-0">Special Newcomer Meeting at Grace United Methodist Church (Library Parlor), Gaithersburg, MD. Phone <a href="tel:+13016555728">(301) 655-5728</a> for details, or just show up.</p>
-      </div>
+      <li class="qa-item" id="what-is-oa">
+        <h3>What is OA?</h3>
+        <p>Overeaters Anonymous is a fellowship of people who, through shared experience, strength, and hope, are recovering from compulsive eating and food behaviors. We use the Twelve Steps adapted from Alcoholics Anonymous as our program of recovery.</p>
+        <p>OA is <strong>not a diet club</strong>. We don't weigh in, prescribe a food plan, or charge dues. Whatever your relationship with food — compulsive overeating, undereating, food addiction, anorexia, bulimia, binge eating, or overexercising — you're welcome.</p>
+        <p class="mb-0">Our primary purpose is to abstain from compulsive eating and to carry the message of recovery to those who still suffer.</p>
+      </li>
 
-      <h2>The newcomer pamphlet</h2>
-      <p>OA's free <em>Newcomer's Pamphlet</em> is the best place to start reading. It answers the most common questions and walks you through what a meeting looks like.</p>
-      <p><a class="btn btn-secondary" href="https://oa.org/newcomers/" rel="noopener">Read OA's newcomer materials →</a></p>
+      <li class="qa-item" id="is-oa-for-me">
+        <h3>Is OA right for me?</h3>
+        <p>Only you can answer that. Below are 15 questions adapted from OA's literature. They aren't a diagnosis — just a way to think about whether your eating may be compulsive.</p>
 
-      <h2>The Twelve Steps</h2>
-      <p>OA's recovery program is built on the Twelve Steps adapted from Alcoholics Anonymous. You'll hear members reference them at every meeting. You don't need to know them, agree with them, or work them to be welcome — but you'll find they're at the heart of how we recover.</p>
-      <p><a href="about.html#steps">Read the Twelve Steps →</a></p>
+        <div class="self-test" id="self-test">
+          <h4>Are you a compulsive eater?</h4>
+          <p class="lede mb-0">Answer yes or no for each question. No data is sent anywhere — this runs in your browser.</p>
+          <ol id="self-test-questions"></ol>
+          <div id="self-test-result" hidden></div>
+        </div>
+      </li>
 
-      <h2>A note on anonymity</h2>
-      <p>Anonymity is the spiritual foundation of our program. We never share who attends meetings, what they say, or any personal information outside the room. You can use just your first name, and you can trust that what you share is held in confidence.</p>
+      <li class="qa-item" id="how-to-start">
+        <h3>How do I start?</h3>
+        <p>The simplest start is to attend a meeting. You don't need to introduce yourself, share, or commit to anything — you can just listen.</p>
+        <ul>
+          <li><a href="meetings.html">Find a DC metro meeting</a> — in-person, hybrid, virtual, or phone.</li>
+          <li><a href="meetings.html#metro">Look for a <strong>newcomer</strong> meeting</a> — designed as an introduction with time for questions.</li>
+          <li>Call or text <a href="tel:+12026814056">(202) 681-4056</a> — a real OA member will answer.</li>
+        </ul>
+        <p class="mb-0">If a meeting doesn't feel like a fit, try another. Meetings vary in tone, format, and focus — it's normal to attend several before one clicks.</p>
+      </li>
 
+      <li class="qa-item" id="what-to-expect">
+        <h3>What can I expect from a meeting?</h3>
+        <p>Most meetings last 60 to 90 minutes and follow a simple format:</p>
+        <ul>
+          <li>Readings from OA literature — usually the Steps, the Traditions, and a short welcome to newcomers.</li>
+          <li>Members sharing what's working for them and what they're struggling with.</li>
+          <li>A pause to pass the basket — that's the Seventh Tradition (we're self-supporting through our own contributions). You don't need to give.</li>
+          <li>Time at the end for newcomer questions or one-on-one conversation.</li>
+        </ul>
+        <p class="mb-0">You can listen the whole time. You can leave whenever. You only use your first name. <strong>Anonymity is the spiritual foundation of our program</strong> — what you hear stays in the room.</p>
+      </li>
+
+      <li class="qa-item" id="how-oa-works">
+        <h3>How does OA work?</h3>
+        <p>OA's program of recovery is built on the Twelve Steps, adapted from Alcoholics Anonymous. Working the Steps — usually with a sponsor's guidance — helps members find freedom from the compulsion to eat.</p>
+        <p>We also use nine Tools of Recovery that support daily living: a plan of eating, sponsorship, meetings, telephone, writing, literature, an action plan, anonymity, and service.</p>
+        <p class="mb-0">You don't need to understand any of this on day one. Members say what helped most was simply <em>keep coming back</em>.</p>
+      </li>
+
+      <li class="qa-item" id="sponsor">
+        <h3>How do I get a sponsor?</h3>
+        <p>A sponsor is a fellow OA member with some experience working the Steps who agrees to walk you through them. Sponsorship is free and is one of the most powerful Tools.</p>
+        <ul>
+          <li>Listen at meetings for someone whose recovery you'd like — what they say, how they handle hard things.</li>
+          <li>Ask after the meeting, or send a message. Most members are honored to be asked.</li>
+          <li>If they can't sponsor, they'll often suggest someone who can. It's normal to ask several people before finding a fit.</li>
+        </ul>
+        <p class="mb-0">There's no single right way. A sponsor doesn't need to live nearby — phone and video work well.</p>
+      </li>
+
+      <li class="qa-item" id="contact">
+        <h3>Where can I call or email with questions?</h3>
+        <p>You can always reach a real OA member through DC Metro Intergroup. Anonymity is protected — whatever you share is held in confidence.</p>
+        <ul>
+          <li><strong>Phone or text:</strong> <a href="tel:+12026814056">(202) 681-4056</a></li>
+          <li><strong>Meeting list questions:</strong> <a href="mailto:whereandwhen@oa-dcmetro.org">whereandwhen@oa-dcmetro.org</a></li>
+          <li><strong>Email reminders:</strong> <a href="mailto:OA-DCMetro-Meeting-Reminders+subscribe@DCmetro-OAIG.groups.io">Subscribe to meeting updates</a></li>
+        </ul>
+        <p class="muted mb-0" style="font-size:.9rem;">In a crisis, please call <strong>988</strong> (Suicide &amp; Crisis Lifeline). OA is a fellowship of recovery, not a substitute for medical or mental health care.</p>
+      </li>
+
+      <li class="qa-item" id="literature">
+        <h3>Recommended literature</h3>
+        <p>OA-approved literature is the best companion to meetings. Most members start with one of these:</p>
+        <ul>
+          <li><em>The OA Newcomer's Pamphlet</em> — short, free download from OA.org.</li>
+          <li><em>Overeaters Anonymous</em>, Second Edition — our main text, with stories of recovery.</li>
+          <li><em>The Twelve Steps and Twelve Traditions of Overeaters Anonymous</em>.</li>
+          <li><em>For Today</em> — a book of daily readings.</li>
+          <li><em>Voices of Recovery</em> — another daily reader, drawn from members' shares.</li>
+        </ul>
+        <p class="mb-0"><a class="btn btn-secondary btn-sm" href="https://bookstore.oa.org" rel="noopener" style="margin-top:.5rem;">Browse OA literature →</a></p>
+      </li>
+
+    </ol>
+
+    <div class="callout callout-warm" style="margin-top: 2.5rem;">
+      <h3>Ready to find a meeting?</h3>
+      <p class="mb-0">See the full DC metro meeting list, filterable by format. <a href="meetings.html">Find a meeting →</a></p>
     </div>
 
-    <aside class="aside">
-      <h3>Take the next step</h3>
-      <ul>
-        <li><a href="meetings.html">See all DC metro meetings</a></li>
-        <li><a href="meetings.html">Find a newcomer-friendly meeting</a></li>
-        <li><a href="about.html#tools">The OA Tools of Recovery</a></li>
-        <li><a href="events.html">Upcoming newcomer events</a></li>
-      </ul>
-
-      <h3 style="margin-top:2rem;">Talk to a person</h3>
-      <p>Call or text our intergroup line — a real OA member will answer.</p>
-      <p><a class="btn btn-primary" href="tel:+12026814056" style="width:100%;">(202) 681-4056</a></p>
-
-      <h3 style="margin-top:2rem;">Stay in touch</h3>
-      <p>Subscribe to our meeting reminders email list.</p>
-      <p><a href="mailto:OA-DCMetro-Meeting-Reminders+subscribe@DCmetro-OAIG.groups.io">Email to subscribe →</a></p>
-    </aside>
   </div>
 </section>
 
@@ -95,36 +144,46 @@
 <footer class="site-footer">
   <div class="container">
     <div class="footer-grid">
-      <div>
-        <div class="footer-brand">OA · DC Metro Intergroup</div>
-        <p class="footer-brand-sub">A fellowship of recovery from compulsive eating in the Washington DC metro area.</p>
-        <p class="footer-brand-sub">Phone &amp; text: <a href="tel:+12026814056">(202) 681-4056</a></p>
+      <div class="footer-col">
+        <h4>Stay in touch</h4>
+        <p class="footer-sub">A few emails a month about meetings, events, and intergroup news.</p>
+        <form class="footer-form" data-stub-form>
+          <label for="ml-email" class="sr-only">Email address</label>
+          <input id="ml-email" type="email" name="email" placeholder="you@example.com" required>
+          <button type="submit" class="btn btn-primary btn-sm">Sign me up</button>
+          <p class="form-ok" hidden>Thanks — you're on the list. <em>(Phase 0 stub; not yet wired.)</em></p>
+        </form>
       </div>
-      <div>
-        <h4>Get started</h4>
-        <ul>
-          <li><a href="meetings.html">Find a meeting</a></li>
-          <li><a href="newcomers.html">Newcomer's guide</a></li>
-          <li><a href="events.html">Upcoming events</a></li>
-          <li><a href="about.html">About OA</a></li>
+      <div class="footer-col">
+        <h4>Order books</h4>
+        <p class="footer-sub">OA-approved literature on OA.org.</p>
+        <p style="margin-top:.5rem;"><a href="https://bookstore.oa.org" rel="noopener">Visit OA bookstore →</a></p>
+      </div>
+      <div class="footer-col">
+        <h4>For medical professionals</h4>
+        <p class="footer-sub">Refer patients or request information.</p>
+        <p style="margin-top:.5rem;"><a href="mailto:whereandwhen@oa-dcmetro.org?subject=Medical%20professional%20inquiry">Get in touch →</a></p>
+      </div>
+      <div class="footer-col">
+        <h4>Follow us</h4>
+        <p class="footer-sub">Updates and announcements.</p>
+        <ul class="social-list">
+          <li><a href="https://www.facebook.com/DCAreaOvereatersAnonymous/" rel="noopener" aria-label="Facebook">FB</a></li>
+          <li><a href="#" aria-label="Instagram — placeholder">IG</a></li>
+          <li><a href="#" aria-label="TikTok — placeholder">TT</a></li>
         </ul>
       </div>
-      <div>
-        <h4>Intergroup</h4>
-        <ul>
-          <li><a href="intergroup.html">Business meetings</a></li>
-          <li><a href="contribute.html">Seventh Tradition</a></li>
-          <li><a href="contact.html">Contact us</a></li>
-          <li><a href="mailto:whereandwhen@oa-dcmetro.org">Meeting list updates</a></li>
-        </ul>
-      </div>
-      <div>
-        <h4>OA worldwide</h4>
-        <ul>
-          <li><a href="https://oa.org" rel="noopener">OA.org</a></li>
-          <li><a href="https://oavirtualregion.org" rel="noopener">Virtual Region</a></li>
-          <li><a href="https://oa.org/find-a-meeting/" rel="noopener">Worldwide meeting finder</a></li>
-        </ul>
+      <div class="footer-col">
+        <h4>Contact us</h4>
+        <p class="footer-sub">Questions? A volunteer will reply.</p>
+        <form class="footer-form" data-stub-form>
+          <label for="ct-msg" class="sr-only">Your message</label>
+          <textarea id="ct-msg" rows="2" placeholder="Your question or message…" required></textarea>
+          <label for="ct-email" class="sr-only">Your email</label>
+          <input id="ct-email" type="email" name="email" placeholder="Your email" required>
+          <button type="submit" class="btn btn-primary btn-sm">Send</button>
+          <p class="form-ok" hidden>Thanks — we'll be in touch. <em>(Phase 0 stub; not yet wired.)</em></p>
+        </form>
       </div>
     </div>
     <div class="footer-bottom">
@@ -134,6 +193,30 @@
   </div>
 </footer>
 
+<dialog class="donate-dialog" id="donate-dialog" aria-labelledby="donate-title">
+  <div class="donate-body">
+    <div class="donate-head">
+      <h2 id="donate-title">Contribute</h2>
+      <button type="button" class="donate-close" aria-label="Close" data-donate-close>×</button>
+    </div>
+    <p class="donate-blurb">Seventh Tradition — OA is fully self-supporting through our own contributions. No dues, no fees, no outside funding. Every gift helps DC Metro Intergroup keep meetings open and carry the message.</p>
+    <div class="donate-options">
+      <a class="donate-option" href="#" rel="noopener" target="_blank" data-donate-paypal>
+        <strong>Give via PayPal <span class="placeholder">link pending</span></strong>
+        <span>Fast and secure, one-time or recurring.</span>
+      </a>
+      <div class="donate-option" style="cursor:default;">
+        <strong>Mail a check</strong>
+        <span>Made out to <em>DC Metro Intergroup of Overeaters Anonymous</em>:</span>
+        <span class="addr">[PLACEHOLDER: mailing address]</span>
+      </div>
+    </div>
+    <p class="donate-foot"><a href="donate.html">Open as a page →</a></p>
+  </div>
+</dialog>
+
 <script src="assets/js/nav.js"></script>
+<script src="assets/js/donate.js"></script>
+<script src="assets/js/quiz.js"></script>
 </body>
 </html>

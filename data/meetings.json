@@ -6,11 +6,13 @@
     "time": "6:00 PM",
     "duration_min": 60,
     "format": "in-person",
+    "region": "dc",
     "focus": "Open",
     "location_name": "St. Margaret's Episcopal Church",
     "address": "1830 Connecticut Ave NW, Washington, DC",
     "join_link": null,
     "phone": null,
+    "size": null,
     "notes": ""
   },
   {
@@ -20,11 +22,13 @@
     "time": "12:00 PM",
     "duration_min": 60,
     "format": "in-person",
+    "region": "metro",
     "focus": "Open",
     "location_name": "United Church of Christ",
     "address": "Bethesda, MD",
     "join_link": null,
     "phone": null,
+    "size": null,
     "notes": ""
   },
   {
@@ -34,11 +38,13 @@
     "time": "11:00 AM",
     "duration_min": 60,
     "format": "hybrid",
+    "region": "metro",
     "focus": "Open",
     "location_name": "Grace United Methodist Church",
     "address": "Gaithersburg, MD",
     "join_link": null,
     "phone": "425-436-6374 (PIN 125516)",
+    "size": null,
     "notes": "Phone access available."
   },
   {
@@ -48,11 +54,13 @@
     "time": "11:00 AM",
     "duration_min": 60,
     "format": "in-person",
+    "region": "metro",
     "focus": "Newcomer",
     "location_name": "Grace United Methodist Church (Library Parlor)",
     "address": "Gaithersburg, MD",
     "join_link": null,
     "phone": "301-655-5728",
+    "size": null,
     "notes": "Special introduction for newcomers; questions welcome."
   }
 ]
