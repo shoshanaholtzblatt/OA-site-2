@@ -1,4 +1,4 @@
-// Render meetings grouped by region (as given in data), then by day, sorted by time.
+// Render meetings as progressive-disclosure cards, grouped by region.
 // Schema fields used: region, day, time, name, status, frequency, contacts[],
 // zoom_url, phone_access, pin, password, address, room, notes, meeting_id.
 (async function () {
@@ -7,12 +7,13 @@
   const searchEl = document.getElementById("meeting-search");
   if (!root) return;
 
-  const fmtBtns = document.querySelectorAll("[data-format]");
-  let activeFmt = "all";
+  const regionBtns = document.querySelectorAll("[data-region]");
+  let activeRegion = "all";
   let query = "";
   let meetings = [];
 
   const DAYS = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
+  const DAY_ABBR = { Sunday: "SUN", Monday: "MON", Tuesday: "TUE", Wednesday: "WED", Thursday: "THU", Friday: "FRI", Saturday: "SAT" };
 
   function deriveFormat(status) {
     const s = (status || "").toLowerCase();
@@ -20,6 +21,24 @@
     if (s.includes("virtual")) return "virtual";
     if (s.includes("phone only")) return "phone";
     return "in-person";
+  }
+
+  function formatLabel(f) {
+    return ({
+      "in-person": "In-person",
+      virtual: "Virtual",
+      phone: "Phone",
+      hybrid: "Hybrid",
+    })[f] || f;
+  }
+
+  function formatBadgeClass(f) {
+    return ({
+      "in-person": "format-badge format-inperson",
+      virtual: "format-badge format-virtual",
+      phone: "format-badge format-phone",
+      hybrid: "format-badge format-hybrid",
+    })[f] || "format-badge";
   }
 
   function parseTime(s) {
@@ -46,13 +65,20 @@
     return r !== 0 ? r : a.localeCompare(b);
   }
 
-  function tagClass(f) {
-    return ({
-      "in-person": "tag tag-inperson",
-      virtual: "tag tag-virtual",
-      phone: "tag tag-phone",
-      hybrid: "tag tag-hybrid",
-    })[f] || "tag";
+  function regionBucket(region) {
+    if (region === "District of Columbia") return "dc";
+    if (/^maryland/i.test(region)) return "maryland";
+    if (/^virginia/i.test(region)) return "virginia";
+    return "other";
+  }
+
+  function regionSubhead(region) {
+    if (region === "District of Columbia") return "Meetings within Washington, DC";
+    if (region === "Maryland - Montgomery County") return "Montgomery County, MD";
+    if (region === "Maryland - Prince George’s, Anne Arundel, and Howard Counties") return "Prince George’s, Anne Arundel & Howard Counties, MD";
+    if (/^maryland/i.test(region)) return region.replace(/^Maryland\s*-\s*/, "") + ", MD";
+    if (/^virginia/i.test(region)) return region.replace(/^Virginia\s*-\s*/, "") + ", VA";
+    return "";
   }
 
   function escapeHTML(s) {
@@ -61,53 +87,79 @@
     );
   }
 
-  function rowHTML(m) {
+  function regionAnchor(region) {
+    return region.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
+  }
+
+  function cardHTML(m) {
     const fmt = deriveFormat(m.status);
-    const tags = `<span class="${tagClass(fmt)}">${escapeHTML(m.status || fmt)}</span>`;
+    const badge = `<span class="${formatBadgeClass(fmt)}">${formatLabel(fmt)}</span>`;
 
-    const contactLines = (m.contacts || [])
+    const contactRows = (m.contacts || [])
       .map((c) => {
-        const phone = c.phone ? ` · <a href="tel:${escapeHTML(c.phone.replace(/[^0-9+]/g, ""))}">${escapeHTML(c.phone)}</a>` : "";
-        return `<span class="muted">${escapeHTML(c.name || "")}${phone}</span>`;
+        const phone = c.phone
+          ? `<a href="tel:${escapeHTML(c.phone.replace(/[^0-9+]/g, ""))}">${escapeHTML(c.phone)}</a>`
+          : "";
+        return `<div>${escapeHTML(c.name || "")}${phone ? " · " + phone : ""}</div>`;
       })
-      .join("<br>");
+      .join("");
 
-    const addr = m.address ? `<br><span class="muted">${escapeHTML(m.address)}${m.room ? " · Room " + escapeHTML(m.room) : ""}</span>` : "";
+    const addr = m.address
+      ? `<dt>Address</dt><dd>${escapeHTML(m.address)}${m.room ? ` · Room ${escapeHTML(m.room)}` : ""}</dd>`
+      : "";
+
+    const contacts = contactRows
+      ? `<dt>Contact</dt><dd>${contactRows}</dd>`
+      : "";
 
     const zoom = m.zoom_url
-      ? `<br><a href="${escapeHTML(m.zoom_url)}" rel="noopener" target="_blank">Join online →</a>`
+      ? `<dt>Online</dt><dd><a class="meeting-card-zoom" href="${escapeHTML(m.zoom_url)}" rel="noopener" target="_blank">Join Zoom →</a></dd>`
       : "";
 
     const dialin = m.phone_access
-      ? `<br><span class="muted">Phone: <a href="tel:${escapeHTML(m.phone_access.replace(/[^0-9+]/g, ""))}">${escapeHTML(m.phone_access)}</a>${m.pin ? " · ID " + escapeHTML(m.pin) : ""}${m.password ? " · PW " + escapeHTML(m.password) : ""}</span>`
+      ? `<dt>Dial in</dt><dd><div class="meeting-card-dialin">
+          <span><strong>Phone:</strong><a href="tel:${escapeHTML(m.phone_access.replace(/[^0-9+]/g, ""))}">${escapeHTML(m.phone_access)}</a></span>
+          ${m.pin ? `<span><strong>Meeting ID:</strong>${escapeHTML(m.pin)}</span>` : ""}
+          ${m.password ? `<span><strong>Passcode:</strong>${escapeHTML(m.password)}</span>` : ""}
+        </div></dd>`
       : "";
 
-    const notes = m.notes ? `<p class="meeting-loc"><em>${escapeHTML(m.notes)}</em></p>` : "";
+    const notes = m.notes
+      ? `<p class="meeting-card-notes">${escapeHTML(m.notes)}</p>`
+      : "";
+
+    const hasDetails = contacts || addr || zoom || dialin || notes;
 
     return `
-      <article class="meeting-row">
-        <div class="meeting-when">
-          <span class="meeting-day">${escapeHTML(m.day)}</span>
-          <span class="meeting-time">${escapeHTML(m.time)}</span>
-        </div>
-        <div class="meeting-main">
-          <h3>${escapeHTML(m.name || "")}</h3>
-          <p class="meeting-loc">${contactLines}${addr}${zoom}${dialin}</p>
+      <details class="meeting-card">
+        <summary>
+          <div class="meeting-card-top">
+            <span class="meeting-card-when">
+              <span class="meeting-card-day">${escapeHTML(DAY_ABBR[m.day] || m.day || "")}</span>
+              <span class="meeting-card-time">${escapeHTML(m.time || "")}</span>
+            </span>
+            ${badge}
+          </div>
+          <h3 class="meeting-card-name">${escapeHTML(m.name || "")}</h3>
+          ${m.status ? `<p class="meeting-card-status">${escapeHTML(m.status)}</p>` : ""}
+          ${hasDetails ? `<div class="meeting-card-toggle"><span class="meeting-card-toggle-label"></span></div>` : ""}
+        </summary>
+        ${hasDetails ? `<div class="meeting-card-body">
           ${notes}
-        </div>
-        <div class="meeting-tags">${tags}</div>
-      </article>`;
-  }
-
-  function regionAnchor(region) {
-    return region.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
+          <dl>
+            ${contacts}
+            ${addr}
+            ${zoom}
+            ${dialin}
+          </dl>
+        </div>` : ""}
+      </details>`;
   }
 
   function render() {
     const q = query.trim().toLowerCase();
     const filtered = meetings.filter((m) => {
-      const fmt = deriveFormat(m.status);
-      if (activeFmt !== "all" && fmt !== activeFmt) return false;
+      if (activeRegion !== "all" && regionBucket(m.region) !== activeRegion) return false;
       if (!q) return true;
       const hay = [
         m.region, m.day, m.time, m.name, m.status,
@@ -122,24 +174,23 @@
     let html = "";
     let total = 0;
     regions.forEach((region) => {
-      const inRegion = filtered.filter((m) => m.region === region);
+      const inRegion = filtered
+        .filter((m) => m.region === region)
+        .sort((a, b) => {
+          const di = DAYS.indexOf(a.day) - DAYS.indexOf(b.day);
+          return di !== 0 ? di : parseTime(a.time) - parseTime(b.time);
+        });
       if (inRegion.length === 0) return;
       total += inRegion.length;
+      const sub = regionSubhead(region);
       html += `
         <section class="meeting-group" id="${regionAnchor(region)}">
           <div class="meeting-group-head">
-            <h2>${escapeHTML(region)}</h2>
-            <span class="count">${inRegion.length} meeting${inRegion.length === 1 ? "" : "s"}</span>
+            <h2>${escapeHTML(region)}<span class="count">· ${inRegion.length}</span></h2>
+            ${sub ? `<p class="meeting-group-sub">${escapeHTML(sub)}</p>` : ""}
           </div>
           <div class="meeting-list">`;
-      DAYS.forEach((day) => {
-        const dayMeetings = inRegion
-          .filter((m) => m.day === day)
-          .sort((a, b) => parseTime(a.time) - parseTime(b.time));
-        if (dayMeetings.length === 0) return;
-        html += `<div class="meeting-day-head">${day}</div>`;
-        dayMeetings.forEach((m) => { html += rowHTML(m); });
-      });
+      inRegion.forEach((m) => { html += cardHTML(m); });
       html += `</div></section>`;
     });
 
@@ -153,10 +204,10 @@
     root.innerHTML = html;
   }
 
-  fmtBtns.forEach((b) => b.addEventListener("click", () => {
-    fmtBtns.forEach((x) => x.classList.remove("active"));
+  regionBtns.forEach((b) => b.addEventListener("click", () => {
+    regionBtns.forEach((x) => x.classList.remove("active"));
     b.classList.add("active");
-    activeFmt = b.dataset.format;
+    activeRegion = b.dataset.region;
     render();
   }));
   if (searchEl) searchEl.addEventListener("input", (e) => { query = e.target.value; render(); });
