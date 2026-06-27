@@ -211,16 +211,33 @@ p  { margin: 0 0 1rem; color: var(--text); }
 /* ─── Hero ─── */
 .hero {
   position: relative;
-  padding: clamp(64px, 9vw, 128px) 0 clamp(72px, 8vw, 112px);
-  background-color: var(--paper-mint);
-  background-image:
-    linear-gradient(180deg, rgba(250, 246, 238, 0.55) 0%, rgba(250, 246, 238, 0.15) 35%, rgba(250, 246, 238, 0.0) 65%),
-    url("../img/hero-dc-cherry-blossoms.jpg"),
-    linear-gradient(180deg, var(--paper-mint) 0%, var(--paper) 100%);
-  background-size: cover, cover, auto;
-  background-position: center top, center 30%, top left;
-  background-repeat: no-repeat;
+  overflow: hidden;
+  padding: clamp(96px, 12vw, 144px) 0 clamp(128px, 14vw, 160px);
+  background: linear-gradient(180deg, var(--paper-mint) 0%, var(--paper) 100%);
   border-bottom: 1px solid var(--border);
+}
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+.hero-bg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 35%;
+  display: block;
+}
+.hero-bg::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg,
+    rgba(250, 246, 238, 0.65) 0%,
+    rgba(250, 246, 238, 0.35) 35%,
+    rgba(250, 246, 238, 0.10) 60%,
+    rgba(250, 246, 238, 0.0) 80%);
 }
 .hero-inner { max-width: 760px; position: relative; z-index: 1; }
 .hero-eyebrow {
