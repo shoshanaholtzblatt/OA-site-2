@@ -33,10 +33,11 @@
 
 <main id="main">
 
-<section class="page-header">
+<section class="meetings-hero">
   <div class="container">
-    <h1>Meetings</h1>
-    <p class="lede">Find an OA meeting near you. Each listing shows the day, time, format, location, and contact. Everyone with a desire to stop eating compulsively is welcome.</p>
+    <span class="meetings-hero-eyebrow">Meetings</span>
+    <h1>Find an OA meeting near you</h1>
+    <p class="lede">Meetings happen throughout DC, Montgomery County, and the surrounding Maryland area — in-person, hybrid, virtual, and by phone. Tap any meeting for the address, contact, and Zoom or phone details. All are welcome.</p>
   </div>
 </section>
 
@@ -44,16 +45,20 @@
   <div class="container">
 
     <div class="meetings-controls" role="group" aria-label="Meeting filters">
-      <div class="filter-group" role="group" aria-label="Filter by format">
-        <span class="filter-label">Format</span>
-        <button class="chip active" data-format="all">All</button>
-        <button class="chip" data-format="in-person">In-person</button>
-        <button class="chip" data-format="hybrid">Hybrid</button>
-        <button class="chip" data-format="virtual">Virtual</button>
-        <button class="chip" data-format="phone">Phone</button>
+      <div class="filter-group" role="group" aria-label="Filter by region">
+        <span class="filter-label">Filter</span>
+        <button class="chip active" data-region="all">All</button>
+        <button class="chip" data-region="dc">DC</button>
+        <button class="chip" data-region="maryland">Maryland</button>
+        <a class="chip chip-external" href="https://oa.org/find-a-meeting/" rel="noopener" target="_blank">Worldwide OA</a>
       </div>
       <input class="search-input" id="meeting-search" type="search" placeholder="Search location, day, or focus…" aria-label="Search meetings">
     </div>
+
+    <div class="meetings-banner">
+      <strong>Please reach out to the meeting contact</strong> if you're unsure about the current meeting status. Updates? Email <a href="mailto:whereandwhen@oa-dcmetro.org">whereandwhen@oa-dcmetro.org</a>. For meeting reminders, subscribe via <a href="https://oa-dcmetro.org/mailing-list" rel="noopener">the reminders list</a>.
+    </div>
+
     <p class="muted" id="meeting-count" style="margin: 0 0 1.5rem;"></p>
 
     <div id="meeting-root"></div>
