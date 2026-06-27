@@ -215,14 +215,10 @@ p  { margin: 0 0 1rem; color: var(--text); }
   background-color: var(--paper-mint);
   background-image:
     linear-gradient(180deg, rgba(250, 246, 238, 0.55) 0%, rgba(250, 246, 238, 0.15) 35%, rgba(250, 246, 238, 0.0) 65%),
-    image-set(
-      url("../img/hero-dc-cherry-blossoms.webp") type("image/webp"),
-      url("../img/hero-dc-cherry-blossoms.jpg") type("image/jpeg")
-    ),
-    radial-gradient(1200px 600px at 12% -10%, rgba(14, 124, 138, 0.10), transparent 60%),
+    url("../img/hero-dc-cherry-blossoms.jpg"),
     linear-gradient(180deg, var(--paper-mint) 0%, var(--paper) 100%);
-  background-size: cover, cover, auto, auto;
-  background-position: center top, center 30%, top left, top left;
+  background-size: cover, cover, auto;
+  background-position: center top, center 30%, top left;
   background-repeat: no-repeat;
   border-bottom: 1px solid var(--border);
 }
